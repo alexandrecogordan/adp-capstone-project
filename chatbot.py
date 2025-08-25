@@ -6,7 +6,6 @@ from openai import OpenAI
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def get_response(messages, model="gpt-4o", max_length=300):
-    """Generate a response using the chat completions API"""
     try:
         response = client.chat.completions.create(
             model=model,
@@ -39,7 +38,7 @@ while user_input != "quit":
     messages[0]["content"] = f"""You are TechLance's AI assistant specializing in employee policies.
 
          ROLE: Translate complex policies into clear, actionable advice
-         STYLE: Professional yet conversational, concise but complete
+         STYLE: Professional yet conversational, concise but complete and helpful tone
          PERSONALIZATION: Tailor all responses to this employee profile: {employee_context}
 
          GUIDELINES:
@@ -48,6 +47,7 @@ while user_input != "quit":
          - Focus on what matters most to THIS employee
          - Keep responses under 150 words unless complex calculations needed
          - Always explain "why this matters to you"
+         - If policy doesn't apply to this employee, explain why
          
          Use this policy info: {POLICIES}"""
     
