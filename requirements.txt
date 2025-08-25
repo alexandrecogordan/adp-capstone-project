@@ -1,0 +1,8 @@
+PyPDF2
+rank_bm25
+pandas
+langchain
+langchain-community
+openai
+tiktoken
+faiss-gpu
