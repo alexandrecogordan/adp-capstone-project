@@ -102,7 +102,7 @@ if prompt := st.chat_input(welcome_message):
 
          ROLE: Translate complex policies into clear, actionable advice
          STYLE: Professional yet conversational, concise but complete and helpful tone
-         PERSONALIZATION: Tailor all responses to this employee profile: {employee_context}
+         PERSONALIZATION: Tailor all responses to this employee profile: {st.session_state.employee_context}
 
          GUIDELINES:
          - Use simple language, avoid jargon
