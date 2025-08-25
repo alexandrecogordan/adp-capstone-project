@@ -9,6 +9,12 @@ import json
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
+#for RAG integration
+def get_relevant_policies(query, employee_context):
+    # For now, placeholder
+    return "RAG retrieved policies"
+
+
 def get_response(messages, model="gpt-4o", max_length=300):
     try:
         response = client.chat.completions.create(
@@ -96,6 +102,9 @@ if prompt := st.chat_input(welcome_message):
                 policies_data = json.load(f)
             # Convert policies dictionary to formatted string
             POLICIES = "\n".join([f"{k}: {v}" for k, v in policies_data.items()])
+
+            # for RAG integration
+            # POLICIES = get_relevant_policies(prompt, st.session_state.employee_context)
             
             # Create system message with employee context and policies
             system_msg = {"role": "system", "content": f"""You are TechLance's AI assistant specializing in employee policies.
